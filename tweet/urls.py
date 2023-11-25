@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import (home,contactView,createForm,detailView,deleteView,
+from .views import (home,contactView,createForm,detailView,deleteView,hostel_create,
 TweetUpdateView,department_display,professor_display,professor_detail_display,hostel_display,
 hostel_update,professor_update)
 
@@ -18,5 +18,6 @@ urlpatterns=[
                path('department/professor/<int:id>/',professor_detail_display,name='professor_detail'),
                path('department/professor/<int:id>/update/',professor_update,name='pupdate'),
                path('hostel/',hostel_display,name='hostel'),
+               path('hostel_create/',hostel_create, name='hostel_create'),
                path('hostel/<int:id>/update',hostel_update,name='h_update'),
 ]

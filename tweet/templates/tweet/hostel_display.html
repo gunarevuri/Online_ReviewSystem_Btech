@@ -28,16 +28,18 @@ h2
 </style>
 <div>
 	<div style="padding-left:0px;padding-bottom:10vh; display:grid;">
-		<table border="4" >
-			<tr><td>
 
-	<p>ratings:{{ obj.ratings }}</p>
-			<p>update:<a href='/hostel/{{ obj.id }}/update'>ratingsupdate</a></p>
+	
+	{% for obj in objs %}
+	<div style="padding-left:0px;padding-bottom:10vh; display:grid;">
 
-
-</td></tr>
-</fieldset>
-</table>
+	<p>hostel name:{{ obj.Hostel_Name }}</p>
+	<p>hostel ratings:{{ obj.ratings }}</p>
+	<p>hostel total: {{obj.total}}</p>
+	<p> ------------------------------</p>
+	<br>
+	{% endfor %}
+	<div ><h3></h3>  <a href="/hostel_create">Create Hostel</a></h3>  </div>
 </div>
 </div>
 

@@ -28,3 +28,8 @@ class Hostel_rating_update(forms.ModelForm):
 	class Meta:
 		model=Hostel
 		fields=['ratings']
+
+class HostelCreateForm(forms.ModelForm):
+	class Meta:
+		model = Hostel
+		fields =['Hostel_Name','ratings','total']

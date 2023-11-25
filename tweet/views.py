@@ -4,7 +4,7 @@ from .models import UserTweet
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Professor,Department,Hostel
-from .forms import Professor_rating_update,Hostel_rating_update
+from .forms import Professor_rating_update,Hostel_rating_update, HostelCreateForm
 
 
 
@@ -97,10 +97,22 @@ def professor_detail_display(request,id):
     return render(request,'tweet/professor_detail_display.html',{'obj':obj})
 
 
-def hostel_display(request):
+def hostel_create(request):
+    if request.method=='POST':
+        form = HostelCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            obj = Hostel.objects.all()
+            return render(request, 'tweet/hostel_display.html',{'objs':obj})
+    else:
+        form = HostelCreateForm()
+        return render(request, 'tweet/hostel_create.html',{'form':form})
 
-     obj=get_object_or_404(Hostel,id=1)
-     return render(request,'tweet/hostel_display.html',{'obj':obj})
+
+def hostel_display(request):
+     obj = Hostel.objects.all()
+    #  obj=get_object_or_404(Hostel,id=1)
+     return render(request,'tweet/hostel_display.html',{'objs':obj})
 
 
 
